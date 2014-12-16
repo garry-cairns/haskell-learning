@@ -12,15 +12,14 @@ toDigitsRev :: Integer -> [Integer]
 toDigitsRev n = reverse $ toDigits n
 
 doubleEveryOther :: [Integer] -> [Integer]
-doubleEveryOther (x : []) = [x]
 doubleEveryOther (x : xs)
   | length xs `mod` 2 == 0 = (x : doubleEveryOther xs)
   | otherwise = (x*2 : doubleEveryOther xs)
+doubleEveryOther [] = []
 
 sumDigits :: [Integer] -> Integer
-sumDigits [] = 0
-sumDigits (x:[]) = x
 sumDigits (x:xs) = sum (toDigits x ++ [sumDigits xs])
+sumDigits [] = 0
 
 validate :: Integer -> Bool
 validate n
